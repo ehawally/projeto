@@ -1,4 +1,3 @@
-import entities.Cliente;
 import entities.Esteticista;
 import entities.Procedimento;
 import orders.OrdemServico;
