@@ -1,10 +1,11 @@
+import entities.Cliente;
 import entities.Esteticista;
 import entities.Procedimento;
 import orders.OrdemServico;
 
 public class Main {
     public static void main(String[] args) {
-
+        Cliente c1= new Cliente();
         Esteticista e1= new Esteticista();
         Procedimento pro1= new  Procedimento (); 
         Procedimento pro2= new  Procedimento ();
@@ -19,5 +20,7 @@ public class Main {
         oS.setProcedimento(pro1);
         double total= oS.total();  
         System.out.println("preço total: "+ total);
+        System.out.println("" + c1);
+        System.out.println("" + e1);
     }
 }
