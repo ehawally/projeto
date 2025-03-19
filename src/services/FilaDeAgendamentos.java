@@ -2,30 +2,34 @@ package services;
 import java.util.ArrayList;
 import repositories.RepCliente;
 
-public class FilaDeAgendamentos {
-    protected RepCliente[] elementos;
-    protected int capacidade;
-    protected int inicio;
-    protected int fim;
-    protected int tamanho;
+public class FilaDeAgendamentos<T> {
+    protected  ArrayList<T> elementos;
 
-public FilaDeAgendamentos(int capacidade){
-    this.capacidade = capacidade;
-    this.elementos = (RepCliente[]) new RepCliente[capacidade]; 
-    this.inicio= 0;
-    this.fim = -1;
-    this.tamanho= 0;
+    public FilaDeAgendamentos (){
+        this.elementos= new ArrayList<>();
 }
-public void insert (RepCliente valor){
-    if (tamanho== capacidade) {
-        System.out.println("Sem disponibilidade para agendamento" +valor);
-        return;
-    };
-
-
-    fim = (fim+1) % capacidade;
-    elementos[fim]= valor;
-    tamanho++;
+    public void insert (T num){
+        elementos.add(num);
 }
+    public T remove(){
+        if (empty()){
+            System.out.println("Sem disponibilidade na agenda");
+            return null;
+        }
+        return elementos.remove(0);
+    }
+    public boolean empty() {
+        return elementos.isEmpty();
+}
+    public int size(){
+        return elementos.size();
+    }
+    public T front() {
+        if (empty()){
+            System.out.println("Sem agendamentos registrados na fila ainda");
+            return null;
+        }
+        return elementos.get(0);
+    }
 }
 
