@@ -1,16 +1,15 @@
 package services;
 import java.util.ArrayList;
-import repositories.RepCliente;
 
 public class FilaDeAgendamentos<T> {
-    protected  ArrayList<T> elementos;
+    public  ArrayList<T> elementos;
 
     public FilaDeAgendamentos (){
         this.elementos= new ArrayList<>();
 }
     public void insert (T num){
         elementos.add(num);
-}
+} 
     public T remove(){
         if (empty()){
             System.out.println("Sem disponibilidade na agenda");
@@ -30,6 +29,11 @@ public class FilaDeAgendamentos<T> {
             return null;
         }
         return elementos.get(0);
+    }
+
+    @Override
+    public String toString() {
+        return elementos.toString();
     }
 }
 

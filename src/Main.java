@@ -1,26 +1,8 @@
 import entities.Cliente;
-import entities.Esteticista;
 import entities.Procedimento;
-import orders.OrdemServico;
+import repositories.RepCliente;
 
 public class Main {
     public static void main(String[] args) {
-        Cliente c1= new Cliente();
-        Esteticista e1= new Esteticista();
-        Procedimento pro1= new  Procedimento (); 
-        Procedimento pro2= new  Procedimento ();
-        Procedimento pro3= new  Procedimento ();
-        pro1.setPreco(12.90);
-        pro2.setPreco (13.87);
-        pro3.setPreco (90.00);
-
-        OrdemServico oS= new OrdemServico();
-        oS.setProcedimento(pro3);
-        oS.setProcedimento(pro2);
-        oS.setProcedimento(pro1);
-        double total= oS.total();  
-        System.out.println("preço total: "+ total);
-        System.out.println("" + c1);
-        System.out.println("" + e1);
     }
 }
