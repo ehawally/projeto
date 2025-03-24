@@ -1,12 +1,12 @@
 package entities;
 import java.util.ArrayList;
 public class Procedimento {
-    protected String nomeProc;
-    protected double preco;
-    protected ArrayList <String>listaProdutos=new ArrayList<>();
-    protected int tempoMedioMin;
-    protected Esteticista esteticista;
-    protected String descricao;
+    public String nomeProc;
+    public double preco;
+    public ArrayList <String>listaProdutos=new ArrayList<>();
+    public int tempoMedioMin;
+    public Esteticista esteticista;
+    public String descricao;
 
 
     public Procedimento() {

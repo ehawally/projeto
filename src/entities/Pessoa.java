@@ -1,21 +1,24 @@
 package entities;
 
-abstract class Pessoa {
-    protected String nome;
-    protected String sobrenome;
-    protected String cpf;
-    protected String dataNasc; 
-    protected String email;
-    protected int telefone;
-    protected String rg;
-    protected String endereco;
-    protected String logradouro;
-    protected int cep;
+public abstract class Pessoa {
+    public String nome;
+    public String sobrenome;
+    public String cpf;
+    public String dataNasc; 
+    public String email;
+    public int telefone;
+    public String rg;
+    public String endereco;
+    public String logradouro;
+    public int cep;
     
 
     public Pessoa(){
 
-    } 
+    }
+    public Pessoa(String nome){
+        this.nome= nome;
+    }
     public Pessoa( String nome,String sobrenome,String cpf,String dataNasc,String email,
     int telefone,String rg,String endereco,String logradouro,int cep){
         this.nome=nome;

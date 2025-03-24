@@ -30,10 +30,6 @@ public class FilaDeAgendamentos<T> {
         }
         return elementos.get(0);
     }
-
-    @Override
-    public String toString() {
-        return elementos.toString();
-    }
+    
 }
 
