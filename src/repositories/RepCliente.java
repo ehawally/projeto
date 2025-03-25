@@ -6,27 +6,27 @@ import services.FilaDeAgendamentos;
 import entities.Pessoa;
 
 
-public class RepCliente<T>  implements Repositorio<T> {
-    private FilaDeAgendamentos<T> fila;
+public class RepCliente<Cliente>  implements Repositorio<Cliente> {
+    private FilaDeAgendamentos<Cliente> fila;
 
     public RepCliente() {
         this.fila = new FilaDeAgendamentos<>();
     }
-    public String getNomeDeT(T obj) {
+    public String getNomeDeT(Cliente obj) {
         if (obj instanceof Pessoa) {
             return ((Pessoa) obj).getNome();
         }
         return null;
     }
     @Override
-    public void salvar(T cliente) {
-        fila.insert(cliente);
+    public void salvar(Cliente cliente) {
+        fila.enqueue(cliente);
     }
 
     @Override
-    public T excluir(String nome) {
+    public Cliente excluir(String nome) {
         for (int i = 0; i < fila.size(); i++) {
-            T cliente = fila.elementos.get(i);
+            Cliente cliente = fila.elementos.get(i);
             String nomeCliente = getNomeDeT(cliente);
             if (nomeCliente != null && nomeCliente.equals(nome)) {
                 fila.elementos.remove(i);
@@ -39,17 +39,17 @@ public class RepCliente<T>  implements Repositorio<T> {
     }
     @Override
 
-    public List<T> listarTodos() {
-        List<T> lista = new ArrayList<>();
-        for (T cliente : fila.elementos) {
+    public List<Cliente> listarTodos() {
+        List<Cliente> lista = new ArrayList<>();
+        for (Cliente cliente : fila.elementos) {
             lista.add(cliente);
         }
         return lista;
     }
 
 @Override
-public T buscaPorNome(String nome) {
-    for (T item : fila.elementos) {
+public Cliente buscaPorNome(String nome) {
+    for (Cliente item : fila.elementos) {
         String nomeCliente = getNomeDeT(item);
         if (nomeCliente != null && nomeCliente.equals(nome)) {
             return item;
@@ -58,7 +58,7 @@ public T buscaPorNome(String nome) {
     return null;
 }
 @Override
-public T atualizar(T obj) {
+public Cliente atualizar(Cliente obj) {
     String nome = getNomeDeT(obj);
     if (nome == null) return null;
     

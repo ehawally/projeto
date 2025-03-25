@@ -21,9 +21,9 @@ public class Main {
         c3.setNome("Fulano");
         c3.setSobrenome("De Tal");
 
-        fila.insert(c1);
-        fila.insert(c2);
-        fila.insert(c3);
+        fila.enqueue(c1);
+        fila.enqueue(c2);
+        fila.enqueue(c3);
 
         
         repo.salvar(c1);
@@ -32,8 +32,8 @@ public class Main {
 
         System.out.println("Primeiro Cliente Atual: " + fila.front());
         System.out.println("Quantas pessoas na fila "+ fila.size());
-        System.out.println("Cliente Removido: " + fila.remove());
-        System.out.println("Cliente Removido: " + fila.remove());
+        System.out.println("Cliente Removido: " + fila.dequeue());
+        System.out.println("Cliente Removido: " + fila.dequeue());
         System.out.println("Primeiro Cliente Atual: " + fila.front());
         System.out.println("A fila está vazia? " + fila.empty());
         System.out.println("E se ela estivesse?... como que apareceria: "+ fila2.empty());

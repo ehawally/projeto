@@ -1,16 +1,17 @@
 package services;
 import java.util.ArrayList;
 
-public class FilaDeAgendamentos<T> {
-    public  ArrayList<T> elementos;
+
+public class FilaDeAgendamentos<Cliente> {
+    public  ArrayList<Cliente> elementos;
 
     public FilaDeAgendamentos (){
         this.elementos= new ArrayList<>();
 }
-    public void insert (T num){
-        elementos.add(num);
+    public void enqueue (Cliente cliente){
+        elementos.add(cliente);
 } 
-    public T remove(){
+    public Cliente dequeue(){
         if (empty()){
             System.out.println("Sem disponibilidade na agenda");
             return null;
@@ -23,13 +24,13 @@ public class FilaDeAgendamentos<T> {
     public int size(){
         return elementos.size();
     }
-    public T front() {
+    public Cliente front() {
         if (empty()){
             System.out.println("Sem agendamentos registrados na fila ainda");
             return null;
         }
         return elementos.get(0);
     }
-    
+
 }
 
