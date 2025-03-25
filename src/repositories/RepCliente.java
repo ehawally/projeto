@@ -71,7 +71,5 @@ public Cliente atualizar(Cliente obj) {
     return null;
 }
 
-    public boolean isEmpty() {
-        return fila.empty();
-    }
+
 }

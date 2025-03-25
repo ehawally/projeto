@@ -32,5 +32,9 @@ public class FilaDeAgendamentos<Cliente> {
         return elementos.get(0);
     }
 
+    public boolean isEmpty() {
+        return elementos.isEmpty(); 
+    }
+
 }
 

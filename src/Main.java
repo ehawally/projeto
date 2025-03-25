@@ -30,13 +30,15 @@ public class Main {
         repo.salvar(c2);
         repo.salvar(c3);
 
+        System.out.println("A fila está vazia? " + (fila.isEmpty() ? "Vazia" : "A fila não está vazia"));
+        System.out.println("E se ela estivesse?... como que apareceria: " + (fila2.isEmpty() ? "Vazia" : "A fila não está vazia"));
         System.out.println("Primeiro Cliente Atual: " + fila.front());
         System.out.println("Quantas pessoas na fila "+ fila.size());
         System.out.println("Cliente Removido: " + fila.dequeue());
         System.out.println("Cliente Removido: " + fila.dequeue());
         System.out.println("Primeiro Cliente Atual: " + fila.front());
-        System.out.println("A fila está vazia? " + fila.empty());
-        System.out.println("E se ela estivesse?... como que apareceria: "+ fila2.empty());
+        System.out.println("A fila está vazia? " + fila.isEmpty());
+        System.out.println("E se ela estivesse?... como que apareceria: "+ fila2.isEmpty());
         System.out.println("E agora tem quantos na fila: " +fila.size());
         System.out.println("Lista de clientes:");
         for (Cliente cliente : repo.listarTodos()) {
