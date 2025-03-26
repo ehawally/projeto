@@ -2,15 +2,14 @@ package repositories;
 import java.util.List;
 import java.util.ArrayList;
 import interfaces.Repositorio;
-import services.FilaDeAgendamentos;
 import entities.Pessoa;
 
 
 public class RepCliente<Cliente>  implements Repositorio<Cliente> {
-    private FilaDeAgendamentos<Cliente> fila;
+    private List<Cliente> clientes;
 
     public RepCliente() {
-        this.fila = new FilaDeAgendamentos<>();
+        this.clientes = new ArrayList<>();
     }
     public String getNomeDeT(Cliente obj) {
         if (obj instanceof Pessoa) {
@@ -18,18 +17,18 @@ public class RepCliente<Cliente>  implements Repositorio<Cliente> {
         }
         return null;
     }
-    @Override
+@Override
     public void salvar(Cliente cliente) {
-        fila.enqueue(cliente);
+        clientes.add(cliente);
     }
 
-    @Override
+@Override
     public Cliente excluir(String nome) {
-        for (int i = 0; i < fila.size(); i++) {
-            Cliente cliente = fila.elementos.get(i);
+        for (int i = 0; i < clientes.size(); i++) {
+            Cliente cliente = clientes.get(i);
             String nomeCliente = getNomeDeT(cliente);
             if (nomeCliente != null && nomeCliente.equals(nome)) {
-                fila.elementos.remove(i);
+                clientes.remove(i);
                 System.out.println("Cliente removido: " + cliente);
                 return cliente;
             }
@@ -37,39 +36,33 @@ public class RepCliente<Cliente>  implements Repositorio<Cliente> {
         System.out.println("Cliente não encontrado");
         return null;
     }
-    @Override
+@Override
 
     public List<Cliente> listarTodos() {
-        List<Cliente> lista = new ArrayList<>();
-        for (Cliente cliente : fila.elementos) {
-            lista.add(cliente);
-        }
-        return lista;
+        return new ArrayList<>(clientes); 
     }
 
 @Override
-public Cliente buscaPorNome(String nome) {
-    for (Cliente item : fila.elementos) {
-        String nomeCliente = getNomeDeT(item);
-        if (nomeCliente != null && nomeCliente.equals(nome)) {
-            return item;
+    public Cliente buscaPorNome(String nome) {
+        for (Cliente cliente : clientes) {
+            String nomeCliente = getNomeDeT(cliente);
+                if (nomeCliente != null && nomeCliente.equals(nome)) {
+            return cliente;
         }
     }
     return null;
 }
 @Override
-public Cliente atualizar(Cliente obj) {
-    String nome = getNomeDeT(obj);
-    if (nome == null) return null;
-    
-    for (int i = 0; i < fila.size(); i++) {
-        if (getNomeDeT(fila.elementos.get(i)).equals(nome)) {
-            fila.elementos.set(i, obj);
+    public Cliente atualizar(Cliente obj) {
+        String nome = getNomeDeT(obj);
+            if (nome == null) return null;
+
+    for (int i = 0; i < clientes.size(); i++) {
+        if (getNomeDeT(clientes.get(i)).equals(nome)) {
+            clientes.set(i, obj);
             return obj;
         }
     }
     return null;
 }
-
-
 }

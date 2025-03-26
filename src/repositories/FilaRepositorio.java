@@ -1,11 +1,11 @@
-package services;
+package repositories;
 import java.util.ArrayList;
+import java.util.List;
 
-
-public class FilaDeAgendamentos<Cliente> {
+public class FilaRepositorio<Cliente> {
     public  ArrayList<Cliente> elementos;
 
-    public FilaDeAgendamentos (){
+    public FilaRepositorio (){
         this.elementos= new ArrayList<>();
 }
     public void enqueue (Cliente cliente){
@@ -34,6 +34,9 @@ public class FilaDeAgendamentos<Cliente> {
 
     public boolean isEmpty() {
         return elementos.isEmpty(); 
+    }
+    public List<Cliente> listarTodos() {
+        return List.copyOf(elementos);
     }
 
 }
