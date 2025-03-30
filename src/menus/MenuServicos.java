@@ -1,4 +1,6 @@
-package services;
+package menus;
+
+import services.Servico;
 
 public abstract class MenuServicos {
     public abstract void listarServicos();

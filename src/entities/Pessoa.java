@@ -85,7 +85,7 @@ public abstract class Pessoa {
         this.logradouro = logradouro;
     }
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome= nome;
     }
     public void setRg(String rg) {
         this.rg = rg;

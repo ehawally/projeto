@@ -5,7 +5,7 @@ import interfaces.Repositorio;
 import entities.Pessoa;
 
 
-public class RepCliente<Cliente>  implements Repositorio<Cliente> {
+public class RepCliente<Cliente extends Pessoa>  implements Repositorio<Cliente> {
     private List<Cliente> clientes;
 
     public RepCliente() {
@@ -53,14 +53,14 @@ public class RepCliente<Cliente>  implements Repositorio<Cliente> {
     return null;
 }
 @Override
-    public Cliente atualizar(Cliente obj) {
-        String nome = getNomeDeT(obj);
-            if (nome == null) return null;
-
+public Cliente atualizar(Cliente obj) {
+    String nome = getNomeDeT(obj);
+    if (nome == null) return null;
     for (int i = 0; i < clientes.size(); i++) {
         if (getNomeDeT(clientes.get(i)).equals(nome)) {
-            clientes.set(i, obj);
-            return obj;
+            Cliente clienteExistente = clientes.get(i);
+            clienteExistente.setNome(obj.getNome());
+            return clienteExistente;
         }
     }
     return null;

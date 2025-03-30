@@ -4,12 +4,16 @@ public class Cliente extends Pessoa {
     protected Procedimento procedimento;
     protected String hora;
 
+   
     public Cliente(  ) {
         this.procedimento = new Procedimento();
         this.hora = "00:00";
     }
     public Cliente(String Nome,String hora){
         this.hora=hora;
+    }
+    public Cliente(String nome) {
+        super(nome);
     }
     public Cliente(String nome, String sobrenome, String cpf, String dataNasc, String email, int telefone, 
     String rg, String endereco, String logradouro, int cep, Procedimento procedimento, String hora) {
@@ -48,7 +52,6 @@ public class Cliente extends Pessoa {
 public String toString() {
     return "Cliente{" +
            " " + nome + '\'' +
-           " " + sobrenome +
            '}';
 }
 }

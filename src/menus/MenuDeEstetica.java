@@ -1,7 +1,8 @@
-package services;
+package menus;
 import java.util.ArrayList;
 
 import interfaces.Gerenciavel;
+import services.Servico;
 public class MenuDeEstetica extends MenuServicos implements Gerenciavel {
     protected ArrayList<Servico> servicosDisponiveis = new ArrayList<>();
 
