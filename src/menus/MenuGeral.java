@@ -3,19 +3,20 @@ import java.util.Scanner;
 
 import entities.Cliente;
 import entities.Pessoa;
-import repositories.FilaRepositorio;
+import repositories.ListaSEncadeada;
 import repositories.RepCliente;
 
 public class MenuGeral {
      private RepCliente<Pessoa> repositorioClientes = new RepCliente<>();
-    private FilaRepositorio<String> fila = new FilaRepositorio<>();
+    private ListaSEncadeada<String> lista = new ListaSEncadeada<>();
     private Scanner scanner = new Scanner(System.in);
-        public void executarMenu() {
+        
+    public void executarMenu() {
             int opcao;
             do {
                 System.out.println("//////// Escolha a Disciplina ////////");
                 System.out.println("1:Estrutura de Dados");
-                System.out.println("2:Programação 2");
+                System.out.println("2:Programação 2(Projeto do primeiro semestre)");
                 System.out.println("3:Sair");
                 System.out.println("====================================");
                 System.out.print("Escolha uma opção: ");
@@ -42,47 +43,69 @@ public class MenuGeral {
             int opcao;
             do {
                 System.out.println("====================================");
-                System.out.println("1:Adicione à fila");
-                System.out.println("2:Remova da fila");
-                System.out.println("3:Veja o primeiro da fila");
-                System.out.println("4:Liste todos da fila");
-                System.out.println("5:Voltar");
+                System.out.println("1:Adicione ao início da lista");
+                System.out.println("2:Adicione ao fim da lista");
+                System.out.println("3:Insira numa posição específica");
+                System.out.println("4:Remover Do início da lista");
+                System.out.println("5:Remover do fim da lista");
+                System.out.println("6:Remover por uma posição especifica");
+                System.out.println("7: Ver tamanho da lista");
+                System.out.println("8: Ver se está vazia");
+                System.out.println("9: Listar todos");
+                System.out.println("10: Voltar");
                 System.out.println("====================================");
                 System.out.print("Escolha uma opção: ");
                 opcao = scanner.nextInt();
                 scanner.nextLine();   
         
-        switch (opcao) {
-            case 1:
-                System.out.print("Digite um nome para adicionar: ");
-                String nome = scanner.nextLine();
-                fila.enqueue(nome);
-                System.out.println(nome + " adicionado");
-                break;
-            case 2:
-                String removido = fila.dequeue();
-                if (removido != null) {
-                    System.out.println(removido + " removido");
-                }
-                break;
-            case 3:
-                String primeiro = fila.front();
-                if (primeiro != null) {
-                    System.out.println("Primeiro da fila: " + primeiro);
-                }
-                break;
-            case 4:
-                System.out.println("Fila atual: " + fila.listarTodos());
-                break;
-            case 5:
-                System.out.println("Voltando ao menu principal...");
-                break;
-            default:
-                System.out.println("Opção inválida");
-        }
-    } while (opcao != 5);
-}
-
+            switch (opcao) {
+                case 1:
+                    System.out.print("Digite um nome para adicionar no início: ");
+                    String nomeInicio = scanner.nextLine();
+                    lista.addFirst(nomeInicio);
+                    break;
+                case 2:
+                    System.out.print("Digite um nome para adicionar no fim: ");
+                    String nomeFim = scanner.nextLine();
+                    lista.addLast(nomeFim);
+                    break;
+                case 3:
+                    System.out.print("Digite a posição: ");
+                    int pos = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Digite o nome: ");
+                    String nome = scanner.nextLine();
+                    lista.insertAt(pos, nome);
+                    break;
+                case 4:
+                    lista.removeFirst();
+                    break;
+                case 5:
+                    lista.removeLast();
+                    break;
+                case 6:
+                    System.out.print("Digite a posição para remover: ");
+                    int posRemover = scanner.nextInt();
+                    scanner.nextLine();
+                    lista.removeAt(posRemover);
+                    break;
+                case 7:
+                    System.out.println("Tamanho da lista: " + lista.size());
+                    break;
+                case 8:
+                    System.out.println(lista.isEmpty() ? "Lista está vazia" : "Lista contém elementos");
+                    break;
+                case 9:
+                    System.out.println("Lista atual: " + lista.listarTodos());
+                    break;
+                case 10:
+                    System.out.println("Voltando ao menu principal...");
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+            }
+        } while (opcao != 10);
+    }
     private void menuProg2() {
         int opcao;
         do {
